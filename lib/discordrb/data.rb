@@ -1354,11 +1354,7 @@ module Discordrb
 
     # @return [Channel, nil] the category channel, if this channel is in a category
     def category
-<<<<<<< HEAD
       @bot.channel(@parent_id) if @parent_id
-=======
-      @bot.channel(@parent_id)
->>>>>>> implement channel categories
     end
 
     alias_method :parent, :category
@@ -1368,11 +1364,7 @@ module Discordrb
     # @raise [ArgumentError] if the target channel isn't a category
     def category=(channel)
       channel = @bot.channel(channel)
-<<<<<<< HEAD
       raise ArgumentError, 'Cannot set parent category to a channel that isn\'t a category' unless channel.category?
-=======
-      raise ArguementError, 'Cannot set parent category to a channel that isn\'t a cateogry' unless channel.category?
->>>>>>> implement channel categories
       @parent_id = channel.id
       update_channel_data
     end
@@ -2709,7 +2701,7 @@ module Discordrb
     # that the client has Read Messages permission on.
     # @return [Channel, nil] The default channel on this server, or nil if there are no channels that the bot can read
     def default_channel
-      text_channels.reject(&:cateogory?).sort_by { |e| [e.position, e.id] }.find do |e|
+      text_channels.sort_by { |e| [e.position, e.id] }.find do |e|
         overwrite = e.permission_overwrites[id]
         if overwrite
           overwrite.allow.read_messages || overwrite.allow.read_messages == overwrite.deny.read_messages
