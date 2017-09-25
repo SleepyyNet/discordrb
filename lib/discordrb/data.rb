@@ -1378,7 +1378,6 @@ module Discordrb
     # @param other [Channel, #resolve_id] The channel below which this channel should be sorted.
     def sort_after(other)
       other = @bot.channel(other)
-      p other
 
       # Position values in Discord channels are unique for a given channel type, but not unique over multiple types
       raise ArgumentError, 'Can only sort a channel after a channel of the same type!' unless other.type == @type
