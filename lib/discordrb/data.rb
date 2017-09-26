@@ -1512,7 +1512,6 @@ module Discordrb
     def children
       return [] unless category?
       server.channels.select { |c| c.parent_id == id }
-      server.channels.select { |c| c.instance_variable_get('@parent_id') == id }
     end
 
     alias_method :channels, :children
